@@ -4,6 +4,10 @@ require 'config.php';
 require 'plugins.php';
 
 chdir($ROOT);
+if (is_file(".deploy"))
+    die("Deploy already in progress");
+
+system("touch .deploy");
 ini_set('implicit_flush', 1);
 header("Content-Type: text/plain");
 
@@ -271,3 +275,5 @@ Make sure apache includes the hosts configuration:
 Include $ROOT/apache.conf
 
 You should probably restart apache now\n\n";
+
+system("rm .deploy");

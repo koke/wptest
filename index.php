@@ -27,7 +27,9 @@ $authpw = $creds[1];
         td,th { text-align: left; padding: 0 1em; border-top: 1px solid #333; border-bottom: 1px solid #333; }
         table { border-collapse: collapse }
         #access { background: #eee; font-style: italic; margin: 1em 0; padding: 1em; width: auto }
-        #wrap { width: 960px; margin: 0 auto; }
+        #wrap, #warning { width: 960px; margin: 0 auto; }
+        #warning { font-size: 1.5em; color: #c00;}
+        #warning a {color:inherit;}
         #bloglist { width: 640px; float: left; margin: 0 }
         #auth, #plugins { width: 300px; float: left; margin: 0 0 0 20px }
         ul {padding-left: 1em; color: #56e; }
@@ -36,7 +38,10 @@ $authpw = $creds[1];
         .dash { font-size: 0.75em; padding-left: 0.4em}
         </style>
     </head>
-    <body>       
+    <body>
+    <?php if (is_file(".deploy")): ?>
+        <div id="warning"><blink>Deploy in progress</blink>(<a href="">Reload</a>)</div>
+    <?php endif; ?>
     <div id='wrap'>
       <div id="bloglist">
       <h1>Test blog collection</h1>
