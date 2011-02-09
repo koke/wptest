@@ -51,6 +51,8 @@ foreach ( $SITES as $name => $info ) {
 		system( "rsync -a $wpdir/ $name/" );
 	else
 		system( "rsync -a trunk/ $name/" );
+	system( "mkdir -p $name/wp-content/uploads" );
+	system( "chmod a+rwX $name/wp-content/uploads" );
 	
 	// Create databases
 	system( "mysqladmin -f drop $name > /dev/null" );
